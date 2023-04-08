@@ -1,0 +1,44 @@
+\begin{table}[t]
+%\renewcommand{\arraystretch}{1.3}
+\centering
+\scriptsize
+
+\begin{threeparttable}
+	\caption{This is a sample table. \vspace{-2mm}}
+	\label{tbl:example}
+	\begin{tabular}{llr}
+		\toprule
+		\bfseries{Some Group} & \bfseries{Some Entry} & \bfseries{Results}  \\
+
+		\toprule
+		2                             & Sample d          & Ok    \\
+		\midrule
+		3                             & Sample e          & Failed    \\
+		\midrule
+		7                             & Sample n          & Ok    \\
+		\midrule
+		\multirow{2}{*}{5}            & Sample j          & Ok    \\
+		                              & Sample k          & Failed    \\
+		\midrule
+		\multirow{2}{*}{6}            & Sample l          & Failed    \\
+		                              & Sample m          & Failed    \\
+		\midrule
+		\multirow{3}{*}{1}            & Sample a          & Ok    \\
+		                              & Sample b          & Failed    \\
+		                              & Sample c          & Ok    \\
+		\midrule
+		\multirow{4}{*}{4}            & Sample f          & Failed    \\
+		                              & Sample g          & Failed    \\
+		                              & Sample h          & Ok    \\
+		                              & Sample i          & Failed    \\
+
+		\bottomrule
+	\end{tabular}
+
+
+	\begin{tablenotes}
+	\item \textbf{Ok}: All the tests passed; \textbf{Failed}: At least one test failed;
+	\end{tablenotes}
+	\vspace{-3mm}
+\end{threeparttable}
+\end{table}

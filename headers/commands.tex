@@ -1,0 +1,89 @@
+% References
+\newcommand{\rsec}[1]{\hyperref[sec:#1]{Section~\ref*{sec:#1}}}
+\newcommand{\rcha}[1]{\hyperref[cha:#1]{Chapter~\ref*{cha:#1}}}
+
+\newcommand{\rfig}[1]{\hyperref[fig:#1]{Figure~\ref*{fig:#1}}}
+\newcommand{\rlst}[1]{\hyperref[lst:#1]{Listing~\ref*{lst:#1}}}
+\newcommand{\ralg}[1]{\hyperref[alg:#1]{Algorithm~\ref*{alg:#1}}}
+\newcommand{\rtbl}[1]{\hyperref[tbl:#1]{Table~\ref*{tbl:#1}}}
+\newcommand{\rgra}[1]{\hyperref[gra:#1]{Grammar~\ref*{gra:#1}}}
+
+\newcommand{\rlne}[1]{\hyperref[lne:#1]{line~\ref*{lne:#1}}}
+\newcommand{\rLne}[1]{\hyperref[lne:#1]{Line~\ref*{lne:#1}}}
+\newcommand{\rlnest}[2]{\hyperref[lne:#1]{lines~\ref*{lne:#1} to~\ref*{lne:#2}}}
+\newcommand{\rLnest}[2]{\hyperref[lne:#1]{Lines~\ref*{lne:#1} to~\ref*{lne:#2}}}
+\newcommand{\rlnesa}[2]{\hyperref[lne:#1]{lines~\ref*{lne:#1} and~\ref*{lne:#2}}}
+\newcommand{\rLnesa}[2]{\hyperref[lne:#1]{Lines~\ref*{lne:#1} and~\ref*{lne:#2}}}
+
+% Inline code
+\newcommand{\cc}[1]{\mbox{\smaller[0.5]\texttt{#1}}}
+
+% Abbreviations
+\def\eg{\emph{e.g.}\@\xspace}
+\def\Eg{\emph{E.g.}\@\xspace}
+\def\ie{\emph{i.e.}\@\xspace}
+\def\Ie{\emph{I.e.}\@\xspace}
+\def\cf{\emph{c.f.}\@\xspace}
+\def\Cf{\emph{C.f.}\@\xspace}
+\def\etc{\emph{etc.}\@\xspace}
+\def\vs{\emph{vs.}\@\xspace}
+\def\wrt{w.r.t\@\xspace}
+\def\dof{d.o.f\@\xspace}
+
+% Make captions justified
+\captionsetup[listing]{justification=justified,singlelinecheck=false}
+\captionsetup[figure]{justification=justified,singlelinecheck=false}
+\captionsetup[Grammar]{justification=justified,singlelinecheck=false}
+
+% Add dirs for images
+\graphicspath{{images/}{images-plain/}{images-template/}}
+
+
+% Commands for including listing, images, and plots
+% Usage: \mintedfilelst{language}{input_file}{Some caption.}
+% Example: \mintedfilelst{c}{example.c}{This is a sample listing.}
+\newcommand{\mintedfilelst}[3]{
+  \begin{listing}[!ht]
+    \centering
+    \begin{tcolorbox}[boxrule=0.0pt, top=-2pt,bottom=-2pt, standard jigsaw, opacityback=0]  % This is for line numbers to be within the column not left of it
+      \inputminted[frame=lines,rulecolor=gray,framesep=2mm,baselinestretch=1.0,fontsize=\scriptsize,linenos,escapeinside=@@,breaklines]{#1}{listings/#2}
+    \end{tcolorbox}
+    \vspace{-0.3em}
+    \caption{#3 \vspace{-3mm}}
+    \label{lst:#2}
+  \end{listing}
+}
+
+% Example: \graphicfig[tight]{width=1.0\textwidth}{label}{Some caption.}
+\newcommand{\graphicfig}[4][]{
+  \begin{figure}[t]
+    \centering
+    \includegraphics[#2]{#3}
+    \ifthenelse { \equal {#1} {tight} } { \vspace{-1.2em} } {}
+    \caption{#4}
+    \label{fig:#3}
+  \end{figure}
+}
+
+% Example: \graphicfiglarge[tight]{width=1.0\textwidth}{label}{Some caption.}
+\newcommand{\graphicfiglarge}[4][]{
+  \begin{figure*}[t]
+    \centering
+    \includegraphics[#2]{#3}
+    \ifthenelse { \equal {#1} {tight} } { \vspace{-1.2em} } {}
+    \caption{#4}
+    \label{fig:#3}
+  \end{figure*}
+}
+
+% Example: \plotfig{0.78\textwidth}{input_file}{Some caption.}
+\newcommand{\plotfig}[4][]{
+  \begin{figure}[t]
+    \centering
+    \resizebox{#2}{!}{
+      \input{plots/#3}
+      }
+      \caption{#4}
+      \label{fig:#3}
+  \end{figure}
+}

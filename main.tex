@@ -1,0 +1,53 @@
+\documentclass[11pt,letterpaper,twocolumn]{article}
+
+% Choose the conference style
+\usepackage[11pt,nocopyright]{sigmin}
+\usepackage[square,comma,numbers,sort&compress]{natbib}
+
+% Include packages
+\input{headers/packages.tex}
+
+\newcommand{\XX}[0]{\textcolor{red}{XXX}}
+\newcommand{\XXX}[1]{\textcolor{red}{XXX: #1}}
+\newcommand{\TODO}[1]{\textcolor{Melon}{TODO: #1}}
+
+\input{headers/commands.tex}
+%\input{rev}
+
+\input{headers/acronyms.tex}
+
+\begin{document}
+
+\input{headers/title_author.tex}
+\date{}
+\maketitle
+
+\sloppy
+
+\begin{abstract}
+\input{abstract.tex}
+\end{abstract}
+
+\input{sections/introduction.tex}
+\input{sections/background.tex}
+\input{sections/challenges.tex}
+\input{sections/design.tex}
+\input{sections/implementation.tex}
+\input{sections/evaluation.tex}
+\input{sections/discussion.tex}
+\input{sections/relatedwork.tex}
+\input{sections/conclusion.tex}
+\input{sections/acknowledgements.tex}
+
+\balance
+\bibliographystyle{abbrvnat}
+\footnotesize
+\setlength{\bibsep}{3pt}
+\bibliography{main}
+
+% Enable appendix
+%\clearpage
+%\appendix
+%\input{sections/appendix.tex}
+
+\end{document}
