@@ -12,7 +12,7 @@ This template requires [drawio](https://www.diagrams.net/) to be in `$PATH`.
 Assume `~/bin` is in my `$PATH`.
 
 ```
-❯ brew info drawio
+❯ brew install drawio
 ❯ ln -s /Applications/draw.io.app/Contents/MacOS/draw.io ~/bin/drawio 
 ```
 
