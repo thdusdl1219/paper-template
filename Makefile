@@ -24,6 +24,10 @@ DRAW_IMG_SLIDES := $(patsubst images-src/%.drawio,images-slides/%.png,$(IMG_SOUR
 ALL_SOURCES  := $(TEX_SOURCES) $(IMG_SOURCES) $(PLT_SOURCES) $(LST_SOURCES) $(PLAIN_IMG) $(BIBLIO)
 TARGET_DEPS  := $(TEX_SOURCES) $(LST_SOURCES) $(PLAIN_IMG) $(DRAW_IMG) $(PLOT_IMG) $(BIBLIO)
 
+# Compilation Option
+BTEX := --bibtex-args="-min-crossrefs=99"
+LTEX := --latex-args="-synctex=1 --shell-escape -file-line-error -interaction=nonstopmode"
+
 
 .PHONY:
 all: $(TARGET).pdf
@@ -37,7 +41,7 @@ png-images: $(DRAW_IMG_PNG)
 images-slides: $(DRAW_IMG_SLIDES)
 
 %.pdf: %.tex $(BIBLIO)
-	TEXINPUTS=$(STY_DIR): ./bin/latexrun --latex-args="-synctex=1 --shell-escape -file-line-error -interaction=nonstopmode" -O $(BUILD_DIR) $<
+	TEXINPUTS=$(STY_DIR): ./bin/latexrun $(LTEX) $(BTEX) -O $(BUILD_DIR) $<
 	cp $(BUILD_DIR)/$@ $@
 
 $(BUILD_DIR)/$(TARGET).aux:
