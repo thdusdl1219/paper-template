@@ -28,6 +28,8 @@ TARGET_DEPS  := $(TEX_SOURCES) $(LST_SOURCES) $(PLAIN_IMG) $(DRAW_IMG) $(PLOT_IM
 BTEX := --bibtex-args="-min-crossrefs=99"
 LTEX := --latex-args="-synctex=1 --shell-escape -file-line-error -interaction=nonstopmode"
 
+DRAWIO := drawio
+
 
 .PHONY:
 all: $(TARGET).pdf
@@ -52,17 +54,17 @@ bibexport.bib: $(BUILD_DIR)/$(TARGET).aux
 
 images/%.pdf: images-src/%.drawio
 	@mkdir -p $(dir $@)
-	drawio -x -o $@ -f pdf -b 15 --crop $<
+	$(DRAWIO) -x -o $@ -f pdf -b 15 --crop $<
 
 images/%.png: images-src/%.drawio
 	@mkdir -p $(dir $@)
-	drawio -x -o $@ -f png -b 15 -s 4 --crop $<
+	$(DRAWIO) -x -o $@ -f png -b 15 -s 4 --crop $<
 
 images-slides/%.png: images-src/%.drawio
 	@mkdir -p $(dir $@)
 	$(eval TMP := $(shell mktemp))
 	cat $< | sed 's|Times New Roman|Helvetica|g' > $(TMP)  # TODO
-	drawio -x -o $@ -f png -b 15 -s 4 --crop $(TMP)
+	$(DRAWIO) -x -o $@ -f png -b 15 -s 4 --crop $(TMP)
 	rm -rf $(TMP)
 
 plots/%.tex: plots-src/%.plot
