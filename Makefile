@@ -28,7 +28,15 @@ TARGET_DEPS  := $(TEX_SOURCES) $(LST_SOURCES) $(PLAIN_IMG) $(DRAW_IMG) $(PLOT_IM
 BTEX := --bibtex-args="-min-crossrefs=99"
 LTEX := --latex-args="-synctex=1 --shell-escape -file-line-error -interaction=nonstopmode"
 
+# Set DRAWIO path for each OS
+UNAME := $(shell uname)
+
+ifeq ($(UNAME), Linux)
 DRAWIO := drawio
+endif
+ifeq ($(UNAME), Darwin)
+DRAWIO := /Applications/draw.io.app/Contents/MacOS/draw.io
+endif
 
 
 .PHONY:

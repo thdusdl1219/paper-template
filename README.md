@@ -9,11 +9,8 @@ This template requires [drawio](https://www.diagrams.net/) to be in `$PATH`.
 
 #### Mac
 
-Assume `~/bin` is in my `$PATH`.
-
 ```
 ❯ brew install drawio
-❯ ln -s /Applications/draw.io.app/Contents/MacOS/draw.io ~/bin/drawio 
 ```
 
 ### Credits
