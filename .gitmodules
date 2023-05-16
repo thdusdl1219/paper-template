@@ -1,3 +1,3 @@
 [submodule "bibs"]
 	path = bibs
-	url = git@github.gatech.edu:sslab/bibliography.git
+	url = git@github.com:sslab-gatech/bibliography.git
